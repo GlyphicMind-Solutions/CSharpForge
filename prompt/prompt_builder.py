@@ -70,7 +70,7 @@ class PromptBuilder:
     def _build_gpt_prompt(self, topic: str) -> str:
         return (
             "<|start|>system<|message|>\n"
-            "\"You are CSharpForge. Generate C# code ONLY. No markdown. No explanations. End with FIN~.\"\n"
+            "\"You are an Agent using CSharpForge. Generate C# code ONLY. No markdown. No explanations. End with FIN~.\"\n"
             "\"Rules:\"\n"
             "\"1. All reasoning must stay inside the assistant analysis channel.\"\n"
             "\"2. Final output must be pure C# code inside the assistant final channel.\"\n"
@@ -91,7 +91,7 @@ class PromptBuilder:
         return (
             "<|im_start|>system\n"
             "[INST]\n"
-            "You are CSharpForge. Generate C# code ONLY. No markdown. End with FIN~.\n"
+            "You are an Agent using CSharpForge. Generate C# code ONLY. No markdown. End with FIN~.\n"
             "[/INST]\n"
             "<|im_end|>\n\n"
             "<|im_start|>user\n"
@@ -106,7 +106,7 @@ class PromptBuilder:
     def _build_qwen_prompt(self, topic: str) -> str:
         return (
             "<|im_start|>system\n"
-            "You are CSharpForge. Generate C# code ONLY. No markdown. End with FIN~.\n"
+            "You are an Agent using CSharpForge. Generate C# code ONLY. No markdown. End with FIN~.\n"
             "<|im_end|>\n\n"
             "<|im_start|>user\n"
             f"{topic}\n"
@@ -120,7 +120,7 @@ class PromptBuilder:
     def _build_deepseek_prompt(self, topic: str) -> str:
         return (
             "<|begin_of_text|><|system|>\n"
-            "You are CSharpForge. Generate C# code ONLY. No markdown. End with FIN~.\n"
+            "You are an Agent using CSharpForge. Generate C# code ONLY. No markdown. End with FIN~.\n"
             "<|end|>\n\n"
             "<|user|>\n"
             f"{topic}\n"
@@ -134,7 +134,7 @@ class PromptBuilder:
     def _build_phi_prompt(self, topic: str) -> str:
         return (
             "### System\n"
-            "You are CSharpForge. Generate C# code ONLY. No markdown. End with FIN~.\n\n"
+            "You are an Agent using CSharpForge. Generate C# code ONLY. No markdown. End with FIN~.\n\n"
             "### User\n"
             f"{topic}\n\n"
             "### Assistant\n"
@@ -146,7 +146,7 @@ class PromptBuilder:
     def _build_llama_prompt(self, topic: str) -> str:
         return (
             "<|im_start|>system\n"
-            "You are CSharpForge. Generate C# code ONLY. No markdown. End with FIN~.\n"
+            "You are an Agent using CSharpForge. Generate C# code ONLY. No markdown. End with FIN~.\n"
             "<|im_end|>\n\n"
             "<|im_start|>user\n"
             f"{topic}\n"
@@ -175,4 +175,3 @@ class PromptBuilder:
         thoughts = t[:idx].replace("Thinking:", "").strip()
         content = t[idx:].replace("Answer:", "").strip()
         return thoughts, content
-
